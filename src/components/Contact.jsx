@@ -133,7 +133,7 @@ useEffect(() => {
 
       <div
         ref={ref}
-        className="max-w-[1400px] mx-auto w-full opacity-0 translate-y-[28px] transition-all duration-[650ms] ease-out [&.visible]:opacity-100 [&.visible]:translate-y-0"
+        className="max-w-[1300px] mx-auto w-full opacity-0 translate-y-[28px] transition-all duration-[650ms] ease-out [&.visible]:opacity-100 [&.visible]:translate-y-0"
       >
 
         {/* HEADING */}
