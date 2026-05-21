@@ -1,60 +1,98 @@
-import React, { useEffect, useRef } from 'react';
-import { FaDatabase } from "react-icons/fa";
-import { FaTools } from "react-icons/fa";
+import React, { useEffect, useRef } from "react";
+import { FaDatabase, FaTools } from "react-icons/fa";
+
 const skillGroups = [
   {
-    title: 'Frontend',
-    icon: '🎨',
-    skills: ['React.js','HTML', 'CSS3','JavaScript'],
+    title: "Frontend",
+    icon: "🎨",
+    skills: ["React.js", "HTML", "CSS3", "JavaScript"],
   },
   {
-    title: 'Backend',
-    icon: '⚙️',
-    skills: ['Spring Boot'],
+    title: "Backend",
+    icon: "⚙️",
+    skills: ["Spring Boot"],
   },
   {
-    title: 'Database',
+    title: "Database",
     icon: <FaDatabase />,
-    skills: ['MongoDB', 'MySQL'],
+    skills: ["MongoDB", "MySQL"],
   },
   {
-    title: 'Tools',
+    title: "Tools",
     icon: <FaTools />,
-    skills: ['Docker','GitHub','Postman'],
+    skills: ["Docker", "GitHub", "Postman"],
   },
 ];
 
 export default function Skills() {
   const ref = useRef(null);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) e.target.classList.add('visible'); },
-      { threshold: 0.1 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
+useEffect(() => {
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      } else {
+        entry.target.classList.remove("visible");
+      }
+    },
+    {
+      threshold: 0.18,
+    }
+  );
+
+  if (ref.current) {
+    observer.observe(ref.current);
+  }
+
+  return () => observer.disconnect();
+}, []);
 
   return (
-    <section id="skills" className="py-20 relative z-10">
-      <div 
-        className="max-w-[1300px] mx-auto w-full opacity-0 translate-y-[28px] transition-all duration-[650ms] ease-out [&.visible]:opacity-100 [&.visible]:translate-y-0" 
+    <section
+      id="skills"
+      className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 relative z-10"
+    >
+      <div
         ref={ref}
+        className="max-w-[1300px] mx-auto w-full opacity-0 translate-y-[28px] transition-all duration-[650ms] ease-out [&.visible]:opacity-100 [&.visible]:translate-y-0"
       >
-        <div className="text-[clamp(1.8rem,4vw,2.4rem)] font-extrabold tracking-[-0.02em] mb-[0.8rem]">Tech Stack</div>
-        <div className="h-[3px] bg-accent rounded-[2px] mb-12 w-[340px] max-md:w-[260px] max-lg:w-[280px]" />
+        {/* HEADING */}
+        <div className="inline-block pb-8">
+  <div className="pb-2 font-['Plus_Jakarta_Sans'] text-[clamp(2.2rem,3vw,4rem)] font-extrabold tracking-[-0.03em] leading-none mb-3 bg-gradient-to-r bg-white bg-clip-text text-transparent">
+    Technical Skills
+  </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {skillGroups.map(g => (
-            <div className="bg-bg2 border border-border rounded-[14px] p-7 transition-all duration-[250ms] hover:border-accent hover:-translate-y-[3px]" key={g.title}>
-              <div className="flex items-center gap-[10px] mb-[1.2rem]">
-                <span className="text-[1.3rem]">{g.icon}</span>
-                <span className="font-mono text-[0.8rem] text-accent2 uppercase tracking-[0.12em] font-medium">{g.title}</span>
+  <div className="h-[3px] w-full bg-accent rounded-full" />
+</div>
+
+        {/* SKILL GRID */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+          {skillGroups.map((g) => (
+            <div
+              key={g.title}
+              className="bg-bg2 border border-border rounded-2xl p-5 sm:p-7 transition-all duration-300 hover:border-accent hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(124,106,255,0.12)]"
+            >
+              {/* TITLE */}
+              <div className="flex items-center gap-3 mb-5">
+                <span className="text-[1.2rem] sm:text-[1.35rem] text-accent2">
+                  {g.icon}
+                </span>
+
+                <span className="font-mono text-[0.75rem] sm:text-[0.82rem] text-accent2 uppercase tracking-[0.14em] font-medium">
+                  {g.title}
+                </span>
               </div>
-              <div className="flex flex-wrap gap-[6px]">
-                {g.skills.map(s => (
-                  <span className="bg-bg3 border border-border text-text text-[0.8rem] py-[5px] px-[12px] rounded-md font-mono transition-colors duration-200 cursor-default hover:border-accent hover:text-accent2" key={s}>{s}</span>
+
+              {/* SKILLS */}
+              <div className="flex flex-wrap gap-2">
+                {g.skills.map((s) => (
+                  <span
+                    key={s}
+                    className="bg-bg3 border border-border text-text text-[0.72rem] sm:text-[0.8rem] py-[6px] px-[12px] rounded-md font-mono transition-all duration-200 cursor-default hover:border-accent hover:text-accent2 whitespace-nowrap"
+                  >
+                    {s}
+                  </span>
                 ))}
               </div>
             </div>
