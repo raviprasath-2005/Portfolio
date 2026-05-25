@@ -13,27 +13,7 @@ A stunning full-stack developer portfolio with a **unified animated background**
 
 ## 🚀 Quick Start
 
-### 1. Install Dependencies
-```bash
-cd portfolio
-npm install
-```
-
-### 2. Run Dev Server
-```bash
-npm run dev
-```
-
-Then open **http://localhost:5173** in your browser.
-
-### 3. Build for Production
-```bash
-npm run build
-```
-
-Output goes to `dist/` folder — deploy to Vercel, Netlify, or any static host.
-
----
+Open in Browser: https://ravi2005-portfolio.vercel.app/ or https://raviprasath-portfolio.netlify.app/
 
 ## 📁 Project Structure
 
